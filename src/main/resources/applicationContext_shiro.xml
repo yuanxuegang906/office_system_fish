@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+<bean class="org.apache.shiro.web.mgt.DefaultWebSecurityManager" id="securityManager">
+    <property name="realm" ref="jdbcRealm"></property>
+</bean>
+    <bean class="org.apache.shiro.realm.jdbc.JdbcRealm" id="jdbcRealm">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="saltStyle" value="COLUMN"></property>
+        <property name="permissionsLookupEnabled" value="true"></property>
+        <property name="credentialsMatcher" ref="credentialMatcher"></property>
+    </bean>
+    <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher" id="credentialMatcher">
+        <property name="hashAlgorithmName" value="md5"></property>
+        <property name="hashIterations" value="2"></property>
+        <property name="hashSalted" value="true"></property>
+    </bean>
+<bean class="org.apache.shiro.spring.web.ShiroFilterFactoryBean" id="shiroFilter">
+    <property name="loginUrl" value="/login"></property>
+    <property name="successUrl" value="/profileFirst"></property>
+    <property name="unauthorizedUrl" value="/unauthorize"></property>
+    <property name="securityManager" ref="securityManager"></property>
+    <property name="filterChainDefinitions">
+        <!-- anon表示过滤器不做过滤，authc表示过滤器过滤时进行登录验证的过滤，perms表示访问时进行访问权限的过滤-->
+        <value>
+         /login=anon
+            /leave=perms[user:add]
+            /myLeave=perms[user:add]
+            /queryLeave=perms[user:query]
+            /**=authc
+
+        </value>
+    </property>
+</bean>
+
+</beans>
