@@ -1,6 +1,6 @@
 package com.qf.pojo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Leave {
     private Integer lid;

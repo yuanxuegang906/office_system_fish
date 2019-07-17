@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Permissions;
 import com.qf.pojo.PermissionsExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PermissionsMapper {
     long countByExample(PermissionsExample example);

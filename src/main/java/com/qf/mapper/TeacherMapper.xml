@@ -240,4 +240,13 @@
       password = #{password,jdbcType=VARCHAR}
     where tid = #{tid,jdbcType=INTEGER}
   </update>
+  <select id="getPassword" parameterType="string" resultType="string">
+    select password from teacher where username = #{username};
+  </select>
+  <select id="getTeacher" parameterType="string" resultType="teacher">
+    select * from teacher where username = #{username};
+  </select>
+  <select id="selectTeacherByName" resultType="teacher" parameterType="string">
+    select * from teacher where tname like #{name};
+  </select>
 </mapper>

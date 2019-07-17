@@ -178,4 +178,11 @@
       password = #{password,jdbcType=VARCHAR}
     where aid = #{aid,jdbcType=INTEGER}
   </update>
+  <select id="getPassword" parameterType="string" resultType="string">
+    select password from admin where username = #{username};
+  </select>
+  <select id="getAdmin" resultType="admin" parameterType="string">
+    select * from admin where username = #{username};
+  </select>
+
 </mapper>

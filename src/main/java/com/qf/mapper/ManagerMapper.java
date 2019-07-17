@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Manager;
 import com.qf.pojo.ManagerExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ManagerMapper {
     long countByExample(ManagerExample example);
@@ -27,4 +28,7 @@ public interface ManagerMapper {
     int updateByPrimaryKeySelective(Manager record);
 
     int updateByPrimaryKey(Manager record);
+    String  getPassword(String username);
+    Manager getManager(String username);
+    List<Manager> selectManagerByName(String name);
 }

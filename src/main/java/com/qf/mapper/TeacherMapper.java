@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Teacher;
 import com.qf.pojo.TeacherExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface TeacherMapper {
     long countByExample(TeacherExample example);
@@ -27,4 +28,7 @@ public interface TeacherMapper {
     int updateByPrimaryKeySelective(Teacher record);
 
     int updateByPrimaryKey(Teacher record);
+    String  getPassword(String username);
+    Teacher getTeacher(String username);
+    List<Teacher> selectTeacherByName(String name);
 }

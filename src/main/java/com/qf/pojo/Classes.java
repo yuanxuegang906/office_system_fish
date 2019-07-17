@@ -11,6 +11,26 @@ public class Classes {
 
     private String course;
 
+    private Teacher teacher;
+
+    private Manager manager;
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
+
     public Integer getCid() {
         return cid;
     }

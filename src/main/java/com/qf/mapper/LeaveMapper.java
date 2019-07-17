@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Leave;
 import com.qf.pojo.LeaveExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LeaveMapper {
     long countByExample(LeaveExample example);
@@ -27,4 +28,6 @@ public interface LeaveMapper {
     int updateByPrimaryKeySelective(Leave record);
 
     int updateByPrimaryKey(Leave record);
+    List<Leave> myLeave(String username);
+
 }

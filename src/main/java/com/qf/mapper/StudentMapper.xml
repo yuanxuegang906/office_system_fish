@@ -303,4 +303,13 @@
       password = #{password,jdbcType=VARCHAR}
     where sid = #{sid,jdbcType=INTEGER}
   </update>
+  <select id="getPassword" parameterType="string" resultType="string">
+    select password from student where username = #{username};
+  </select>
+  <select id="getStudent" parameterType="string" resultType="student">
+    select * from student where username = #{username};
+  </select>
+  <select id="selectStudentByName" resultType="student" parameterType="string">
+    select * from student where sname like #{name};
+  </select>
 </mapper>

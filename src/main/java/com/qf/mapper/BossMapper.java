@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Boss;
 import com.qf.pojo.BossExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface BossMapper {
     long countByExample(BossExample example);
@@ -27,4 +28,6 @@ public interface BossMapper {
     int updateByPrimaryKeySelective(Boss record);
 
     int updateByPrimaryKey(Boss record);
+    String getPassword(String username);
+    Boss getBoss(String username);
 }

@@ -208,4 +208,23 @@
       course = #{course,jdbcType=VARCHAR}
     where cid = #{cid,jdbcType=INTEGER}
   </update>
+  <resultMap id="classesMap" type="classes">
+    <id property="aid" column="aid"></id>
+    <result property="classname" column="classname"></result>
+    <result property="course" column="course"></result>
+    <association property="teacher" javaType="teacher" >
+      <id property="tid" column="tid"></id>
+      <result property="tname" column="tname"></result>
+    </association>
+    <association property="manager" javaType="manager">
+      <id  property="mid" column="mid"></id>
+      <result column="mname" property="mname"></result>
+    </association>
+  </resultMap>
+  <select id="getClasses" resultMap="classesMap">
+    select * from classes,teacher,manager where classes.tid = teacher.tid and classes.mid = manager.mid;
+  </select>
+  <select id="getClassesByCourse" parameterType="string" resultType="classes">
+    select * from classes where course like #{course};
+  </select>
 </mapper>

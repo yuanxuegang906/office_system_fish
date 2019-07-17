@@ -7,6 +7,7 @@ public class Admin {
 
     private String password;
 
+
     public Integer getAid() {
         return aid;
     }

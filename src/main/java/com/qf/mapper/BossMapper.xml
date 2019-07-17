@@ -240,4 +240,10 @@
       password = #{password,jdbcType=VARCHAR}
     where bid = #{bid,jdbcType=INTEGER}
   </update>
+  <select id="getPassword" parameterType="string" resultType="string">
+    select password from boss where username = #{username};
+  </select>
+  <select id="getBoss" parameterType="string" resultType="boss">
+    select * from boss where username = #{username};
+  </select>
 </mapper>

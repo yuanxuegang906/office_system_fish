@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Weekly;
 import com.qf.pojo.WeeklyExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface WeeklyMapper {
     long countByExample(WeeklyExample example);

@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Classes;
 import com.qf.pojo.ClassesExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ClassesMapper {
     long countByExample(ClassesExample example);
@@ -27,4 +28,6 @@ public interface ClassesMapper {
     int updateByPrimaryKeySelective(Classes record);
 
     int updateByPrimaryKey(Classes record);
+    List<Classes> getClasses();
+    List<Classes> getClassesByCourse(String course);
 }

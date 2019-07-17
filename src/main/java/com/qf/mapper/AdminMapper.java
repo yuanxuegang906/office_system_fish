@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Admin;
 import com.qf.pojo.AdminExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface AdminMapper {
     long countByExample(AdminExample example);
@@ -27,4 +28,7 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(Admin record);
 
     int updateByPrimaryKey(Admin record);
+    String  getPassword(String username);
+    Admin getAdmin(String admin);
+
 }

@@ -77,7 +77,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from leave
+    from s_leave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,29 +88,29 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from leave
+    from s_leave
     where lid = #{lid,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from leave
+    delete from s_leave
     where lid = #{lid,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.qf.pojo.LeaveExample">
-    delete from leave
+    delete from s_leave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.qf.pojo.Leave">
-    insert into leave (lid, reason, starttime, 
+    insert into s_leave (lid, reason, starttime,
       endtime, username, state, 
       flag)
     values (#{lid,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, #{starttime,jdbcType=DATE}, 
       #{endtime,jdbcType=DATE}, #{username,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
       #{flag,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.qf.pojo.Leave">
-    insert into leave
+  <insert id="insertSelective" parameterType="com.qf.pojo.Leave" useGeneratedKeys="true" keyProperty="lid">
+    insert into s_leave
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="lid != null">
         lid,
@@ -159,13 +159,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.qf.pojo.LeaveExample" resultType="java.lang.Long">
-    select count(*) from leave
+    select count(*) from s_leave
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update leave
+    update s_leave
     <set>
       <if test="record.lid != null">
         lid = #{record.lid,jdbcType=INTEGER},
@@ -194,7 +194,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update leave
+    update s_leave
     set lid = #{record.lid,jdbcType=INTEGER},
       reason = #{record.reason,jdbcType=VARCHAR},
       starttime = #{record.starttime,jdbcType=DATE},
@@ -207,7 +207,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.qf.pojo.Leave">
-    update leave
+    update s_leave
     <set>
       <if test="reason != null">
         reason = #{reason,jdbcType=VARCHAR},
@@ -231,7 +231,7 @@
     where lid = #{lid,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.qf.pojo.Leave">
-    update leave
+    update s_leave
     set reason = #{reason,jdbcType=VARCHAR},
       starttime = #{starttime,jdbcType=DATE},
       endtime = #{endtime,jdbcType=DATE},
@@ -240,4 +240,7 @@
       flag = #{flag,jdbcType=INTEGER}
     where lid = #{lid,jdbcType=INTEGER}
   </update>
+  <select id="myLeave" resultType="leave" parameterType="string">
+        select * from  s_leave where username = #{username}
+    </select>
 </mapper>

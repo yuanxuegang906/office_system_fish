@@ -2,8 +2,9 @@ package com.qf.mapper;
 
 import com.qf.pojo.Roles;
 import com.qf.pojo.RolesExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface RolesMapper {
     long countByExample(RolesExample example);
